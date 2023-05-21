@@ -1,0 +1,68 @@
+# Default values for order-kube-chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  registry: docker.io
+  repository: pandeych009/itlogiclab-restaurant-order-kube
+  tag: 3.0.1
+  digest: sha256:2402d23b34fd37c5e792d308f89e59f98bfd024776f64cc7e8eb9d45faf1deab
+
+cloneStaticSiteFromGit:
+  enabled: true
+  image:
+    registry: docker.io
+    repository: padneych009/itlogiclab-restaurant-order-kube
+    tag: 3.0.1
+    digest: sha256:2402d23b34fd37c5e792d308f89e59f98bfd024776f64cc7e8eb9d45faf1deab  
+
+
+## Metadata Name and Labels: 
+metadata: 
+ labels: 
+   pod: 
+     app: order-pod-app-kube
+     type: backend
+   deploy: 
+     app: order-deploy-app
+     type: backend
+   service: 
+     app: order-service-kube
+     type: backend
+service: 
+  name: order-service-kube
+  type: NodePort      
+  ports:
+    http: 8080
+  targetPort:
+    http: 20001
+  nodePorts:
+    http: 30001   
+  sessionAffinity:
+  sessionAffinityConfig:
+  loadBalancerSourceRanges:
+  loadBalancerIP:
+  extraPorts:
+common:
+  labels: 
+     matchLabels: 
+       
+containerPorts:
+  https: 
+metrics:
+ enbable: 
+ service:
+   port:  
+      
+
+fullnameOverride: ""
+
+namespaceOverride: ""
+
+commonLabels: 
+  #app: order-service-kube
+  #type: backend
+  #app: {{ .Values.metadata.labels.service.app }}
+  #type: {{ .Values.metadata.labels.service.type }}

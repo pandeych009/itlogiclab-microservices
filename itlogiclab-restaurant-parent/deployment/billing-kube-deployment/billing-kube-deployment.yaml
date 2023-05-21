@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: billing-kube-deployment
+spec: 
+  replicas: 1
+  strategy: 
+    rollingUpdate:
+      - maxSurge: 1
+      - maxUnavailable: 0
+  selector: 
+    matchLabel:
+      app: billing-kube-pod-app
+  template: 
+    metadata: 
+      name: billing-kube-pod
+    spec: 
+     containers: 
+       - name: billing-container
+         image: pandeych009/itlogiclab-billing-kube:0.0.1
+         readinessProbe:
+           httpGet:
+             path: actuator/health
+             port: 20002
+           initialDelaySeconds: 10
+           periodSeconds: 5
+         livenessProbe: 
+           httpGet:
+             path: actuator/health
+             port: 20002
+         ports:
+           - name: http
+             containerPort: 20002
+             protocol: TCP  
+              
+    

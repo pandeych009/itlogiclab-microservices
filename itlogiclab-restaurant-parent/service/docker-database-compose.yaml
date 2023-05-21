@@ -1,0 +1,51 @@
+version: "3.8"
+
+services:
+  order_data_db:
+    container_name: order-percona-db
+    platform: linux/x86_64
+    image: percona:ps-5.6
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      - MYSQL_ROOT_PASSWORD=$ROOT_PASSWORD
+      - MYSQL_USER=$DB_USER
+      - MYSQL_PASSWORD=$DB_PASSWORD
+      - MYSQL_DATABASE=$MYSQLDB_ORDER_DATABASE
+    ports:
+      - $MYSQLDB_ORDER_LOCAL_PORT:$MYSQLDB_ORDER_DOCKER_PORT
+    volumes:
+      - type: bind
+        source:  $BASE_LOC/$ORDER_MYSQL_DATA_LOC 
+        target: /var/lib/mysql
+        volume:
+          nocopy: true
+      - type: bind
+        source: $BASE_LOC/$ORDER_INITIAL_SCRIPT_LOC
+        target: /docker-entrypoint-initdb.d/1.sql
+        volume:
+          nocopy: true
+  billing_data_db:
+    container_name: billing-percona-db
+    platform: linux/x86_64
+    image: percona:ps-5.6
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=$ROOT_PASSWORD
+      - MYSQL_USER=$DB_USER
+      - MYSQL_PASSWORD=$DB_PASSWORD
+      - MYSQL_DATABASE=$MYSQLDB_BILLING_DATABASE
+      - MYSQL_ROOT_HOST="%"
+    ports:
+      - $MYSQLDB_BILLING_LOCAL_PORT:$MYSQLDB_BILLING_DOCKER_PORT
+    volumes:
+      - type: bind 
+        source: $BASE_LOC/$BILLING_MYSQL_DATA_LOC 
+        target: /var/lib/mysql
+        volume:
+          nocopy: true
+      - type: bind
+        source: $BASE_LOC/$BILLING_INITIAL_SCRIPT_LOC
+        target: /docker-entrypoint-initdb.d/1.sql
+        volume:
+          nocopy: true

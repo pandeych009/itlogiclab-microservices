@@ -1,0 +1,14 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="root">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:string" name="line1"/>
+                <xs:element type="xs:string" name="line2"/>
+                <xs:element type="xs:string" name="city"/>
+                <xs:element type="xs:string" name="state"/>
+                <xs:element type="xs:string" name="country"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:attribute default="urn:jsonschema:com:itlogiclab:order:modal:Address" name="id" type="xs:string"/>
+</xs:schema>

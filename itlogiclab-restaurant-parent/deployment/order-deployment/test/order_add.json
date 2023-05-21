@@ -1,0 +1,13 @@
+  {
+    "orderDate": "20211210\r\n",
+    "orderTime": "0835",
+    "deliveryAddress": {
+      "line1": "C-1804, Sethi Max Royal",
+      "line2": "Sector-76",
+      "city": "Noida",
+      "state": "UP",
+      "pinCode":"201301",
+      "country": "India"
+    },
+    "status": "INQUEUE"
+  }

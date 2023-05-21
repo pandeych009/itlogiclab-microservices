@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+    name: {{ .Release.Name }}-deploy ##Limited to 63 char
+    labels:
+        app: {{ .Values.metadata.labels.deploy.app }}
+        type: {{ .Values.metadata.labels.deploy.type }}
+spec: 
+    replicas: {{ .Values.replicaCount }}
+    selector: 
+        matchLabels:
+             app: {{ .Values.metadata.labels.pod.app}}
+             type: {{ .Values.metadata.labels.pod.type}}
+    template: 
+        metadata: 
+            name: {{ .Release.Name }}-pod-kube
+            labels:  
+                app: {{ .Values.metadata.labels.pod.app}}
+                type: {{ .Values.metadata.labels.pod.type}}
+        spec: 
+          containers:
+           - name: {{ .Release.Name }}-container
+            {{- if .Values.cloneStaticSiteFromGit.enabled }}
+             image: {{ include "order.cloneStaticSiteFromGit.image" . }}
+            {{- end }}
+             imagePullPolicy: IfNotPresent
+             ports: 
+              - name: httpport
+                containerPort: 20001 
+                protocol:  TCP

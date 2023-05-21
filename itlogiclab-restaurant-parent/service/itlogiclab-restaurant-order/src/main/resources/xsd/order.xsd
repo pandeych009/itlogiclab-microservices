@@ -1,0 +1,31 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="root">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:integer" name="orderId"/>
+                <xs:element type="xs:string" name="orderDate"/>
+                <xs:element type="xs:string" name="orderTime"/>
+                <xs:element name="deliveryAddress">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="line1"/>
+                            <xs:element type="xs:string" name="line2"/>
+                            <xs:element type="xs:string" name="city"/>
+                            <xs:element type="xs:string" name="state"/>
+                            <xs:element type="xs:string" name="country"/>
+                        </xs:sequence>
+                        <xs:attribute name="id" default="urn:jsonschema:com:itlogiclab:order:modal:Address" type="xs:string"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element type="xs:string" name="status">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension></xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:attribute default="urn:jsonschema:com:itlogiclab:order:modal:OrderModal" name="id" type="xs:string"/>
+</xs:schema>

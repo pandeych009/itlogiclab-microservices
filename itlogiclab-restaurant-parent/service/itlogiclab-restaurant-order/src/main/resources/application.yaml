@@ -1,0 +1,18 @@
+server: 
+  port: ${PORT:20001}
+  contextPath: /order
+spring:
+ jpa: 
+  properties: 
+   hibernate: 
+     dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+     ddl-auto : none
+     generate_statistics: true
+     events:
+      log:
+        LOG_QUERIES_SLOWER_THAN_MS: 4
+ datasource:
+   username: ${SPRING_DATASOURCE_USERNAME:cpandey}
+   password: ${SPRING_DATASOURCE_PASSWORD:chandan@1234}
+   driver-class-name: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME:com.mysql.cj.jdbc.Driver}
+   url: ${SPRING_DATASOURCE_URL:jdbc:mysql://${MYSQL_HOST:localhost}:3301/${MYSQL-DB-ORDER:orderdb}}
