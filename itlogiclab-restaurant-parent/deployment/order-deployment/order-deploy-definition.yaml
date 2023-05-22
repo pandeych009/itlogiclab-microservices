@@ -5,57 +5,54 @@ metadata:
     labels:
         app: order-app-deployment
 spec: 
-    replicas: 1
-    selector: 
-        matchLabels:
-            app: order-app-pod
+  replicas: 1
+  selector: 
+     matchLabels:
+         app: order-app-pod
+  template: 
+    metadata: 
+       name: order-pod
+       labels:  
+         app: order-app-pod
+    spec: 
+       containers:
+          - name: order-pod
+            image: pandeych009/itlogiclab-restaurant-order@sha256:73ac6e6604b59e923123f2ed94ac2e2c465ab8f0d154d5566923d672c903e591
+            imagePullPolicy: IfNotPresent
+            resources:   
+              limits: 
+                 memory: "512Mi"
+                 cpu: "0.6"                                 
+              requests:
+                 memory: "256Mi"
+                 cpu: "0.5"   
+            livenessProbe: 
+               httpGet:
+                  path: /actuator/health
+                  port: 20001
+               initialDelaySeconds: 10
+               periodSeconds: 10
+            readinessProbe: 
+               httpGet:
+                 path: /actuator/health
+                 port: 20001
+               initialDelaySeconds: 10
+               periodSeconds: 10      
+            env:
+              - name: SPRING_DATASOURCE_URL
+                value: jdbc:mysql://mysql-order-service:3306/orderdb?useSSL=false&max_allowed_packet=15728640&allowPublicKeyRetrieval=true
 
-    template: 
-        metadata: 
-            name: order-pod
-            labels:  
-                app: order-app-pod
-        spec: 
-             containers:
-                  - name: order-pod
-                    image: pandeych009/itlogiclab-restaurant-order@sha256:fa45876a5a84499f8e4ef23c540b2963cc3fd9017072b1938379fc795ef48080
-                    imagePullPolicy: IfNotPresent
-                    resources:   
-                      limits: 
-                         memory: "512Mi"
-                         cpu: "0.6"                                 
-                      requests:
-                         memory: "256Mi"
-                         cpu: "0.5"   
-                    livenessProbe: 
-                       httpGet:
-                          path: actuator/health
-                          port: 20001
-                       initialDelaySeconds: 10
-                       periodSeconds: 10
-                    readinessProbe: 
-                       httpGet:
-                         path: actuator/health
-                         port: 20001
-                       initialDelaySeconds: 10
-                       periodSeconds: 10      
-                    env:
-                      - name: SPRING_DATASOURCE_URL
-                        value: jdbc:mysql://mysql-order-service:3306/orderdb?useSSL=false&max_allowed_packet=15728640&allowPublicKeyRetrieval=true
+              - name: SPRING_DATASOURCE_USERNAME
+                value: cpandey
 
-                      - name: SPRING_DATASOURCE_USERNAME
-                        value: cpandey
+              - name: SPRING_DATASOURCE_PASSWORD
+                value: chandan@1234
 
-                      - name: SPRING_DATASOURCE_PASSWORD
-                        value: chandan@1234
-
-                      - name: SPRING_DATASOURCE_DRIVER_CLASS_NAME
-                        value: com.mysql.cj.jdbc.Driver                                            
-                                                                           
-                    ports: 
-                       - name: httpport
-                         containerPort: 20001 
-                         protocol:  TCP
+              - name: SPRING_DATASOURCE_DRIVER_CLASS_NAME
+                value: com.mysql.cj.jdbc.Driver                                            
+                                                                   
+            ports: 
+               - containerPort: 20001 
 ---
 apiVersion: v1
 kind: Service
@@ -68,5 +65,5 @@ spec:
     ports: 
         - targetPort: 20001
           port: 8080
-          nodePort: 30009
+          nodePort: 32001
     
