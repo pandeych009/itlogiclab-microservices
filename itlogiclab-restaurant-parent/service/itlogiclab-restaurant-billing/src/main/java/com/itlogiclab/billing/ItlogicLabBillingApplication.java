@@ -13,14 +13,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
-public class ItlogicLabsBillingApplication implements CommandLineRunner{
-	private static Logger logger = LogManager.getLogger(ItlogicLabsBillingApplication.class);
+public class ItlogicLabBillingApplication implements CommandLineRunner{
+	private static Logger logger = LogManager.getLogger(ItlogicLabBillingApplication.class);
 	
 	@Autowired
 	private ConfigurableApplicationContext appContextAutoWired; 
 	
 	public static void main(String[] args) {
-		SpringApplication.run(ItlogicLabsBillingApplication.class, args);
+		SpringApplication.run(ItlogicLabBillingApplication.class, args);
 		logger.info("Application started successfully: ");
 	}
 

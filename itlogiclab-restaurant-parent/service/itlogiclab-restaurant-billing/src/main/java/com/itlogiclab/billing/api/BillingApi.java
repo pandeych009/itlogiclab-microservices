@@ -57,6 +57,7 @@ public class BillingApi {
 	
 	@GetMapping(value="/get", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<BillModal>> get(){
+		logger.debug("invoking get API : ");
 		try {
 			List<BillModal> persisted = service.get();
 			return ResponseEntity.ok(persisted);	
@@ -79,16 +80,16 @@ public class BillingApi {
 	}
 	
 	@DeleteMapping(value="/delete/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Long id){
-		logger.debug("Invoing delete method on id: "+id);
+	public ResponseEntity<String> delete(@PathVariable Long id){
+		logger.debug("Invoking delete method on id: "+id);
 		service.delete(id);
-		return ResponseEntity.status(HttpStatus.OK).build();
+		return ResponseEntity.status(200).body("Bills with id "+id+" is deleted");
 	}
 	
 	@DeleteMapping(value="/delete")
-	public ResponseEntity<Void> delete(){
-		logger.debug("Invoing delete method on all: ");
+	public ResponseEntity<String> delete(){
+		logger.debug("Invoking delete method on all: ");
 		service.delete();
-		return ResponseEntity.status(HttpStatus.OK).build();
+		return ResponseEntity.status(200).body("All Bills are deleted");
 	}
 }

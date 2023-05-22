@@ -3,8 +3,8 @@
 
     <property name="BASE_LOG_LOC" value="/opt/multimoduleprojects/restaurant/logs" />
     <property name="ARCHIVE_LOG_LOC" value="${BASE_LOG_LOC}/archived" />
-    <property name="LOG_FILE_NAME" value="itlogiclabs-restaurant-delivery.log" />
-    <property name="ARCHIVE_FILE_NAME" value="itlogiclabs-restaurant-delivery-%d{yyyy-MM-dd}.%i.log" />
+    <property name="LOG_FILE_NAME" value="itlogiclab-restaurant-delivery.log" />
+    <property name="ARCHIVE_FILE_NAME" value="itlogiclab-restaurant-delivery-%d{yyyy-MM-dd}.%i.log" />
     <property name="PATTERN" value="%d %p %C{1.} [%t] %m%n" />
     
 
@@ -36,7 +36,7 @@
     </root>
 	
 	<!-- <logger name="org.mongodb.driver.cluster" level="OFF" /> -->
-    <logger name="com.itlogiclabs.delivery" level="DEBUG" additivity="false">
+    <logger name="com.itlogiclab.delivery" level="DEBUG" additivity="false">
         <appender-ref ref="RollingFile" />
         <appender-ref ref="Console" />
     </logger>

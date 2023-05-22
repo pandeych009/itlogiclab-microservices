@@ -1,8 +1,17 @@
 # Base Alpine Linux based image with OpenJDK JRE only
-FROM openjdk:8-jre-alpine
+FROM openjdk:8-jdk-alpine
+
 # specify default command
-WORKDIR /opt/app
-# copy application WAR (with libraries inside)
-COPY target/altimetrik-evaluation-parent-*.jar app.jar
-##CMD ["/usr/bin/java", "-jar", "-Dspring.profiles.active=test", "/app.jar"]
-ENTRYPOINT ["java","-jar","app.jar"]
+WORKDIR /opt/app/
+
+RUN mkdir -p /opt/app/logs/archived
+RUN ls -ltr /opt/app/
+RUN pwd
+
+COPY target/itlogiclab-restaurant-payment-*.jar payment.jar
+RUN ls -ltr /opt/app/
+
+RUN mkdir -p /opt/multimoduleprojects/restaurant/logs
+RUN ls -ltr /opt/multimoduleprojects/restaurant/logs
+
+ENTRYPOINT ["java","-jar","/opt/app/payment.jar"]

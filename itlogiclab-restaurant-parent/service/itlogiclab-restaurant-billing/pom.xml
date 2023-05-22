@@ -9,10 +9,10 @@
 		<relativePath>../../</relativePath> 
 	</parent>
 	
-	<groupId>com.itlogiclabs.restaurant.billing</groupId>
-	<artifactId>itlogiclabs-restaurant-billing</artifactId>
-	<name>itlogiclabs-restaurant-billing</name>
-	<description>Demo project for Spring Boot</description>
+	<groupId>com.itlogiclab.restaurant.billing</groupId>
+	<artifactId>itlogiclab-restaurant-billing</artifactId>
+	<name>itlogiclab-restaurant-billing</name>
+	<description>Itlogiclab Restaurant Billing App</description>
 	<packaging>jar</packaging>
 	
 	<dependencies>

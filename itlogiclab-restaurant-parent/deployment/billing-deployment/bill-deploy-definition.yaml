@@ -1,49 +1,48 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata: 
-    name: bill
-    labels:
-        app: bill-app-deployment
+  name: bill
+  labels:
+    app: bill-app-deployment
 spec: 
-    replicas: 1
-    selector: 
-        matchLabels:
-            app: bill-app-pod
+  replicas: 1
+  selector: 
+    matchLabels:
+        app: bill-app-pod
+  template: 
+     metadata: 
+       name: bill-pod
+       labels:  
+          app: bill-app-pod
+     spec: 
+        containers:
+          - name: bill-pod
+            image: pandeych009/itlogiclab-restaurant-billing@sha256:f9e3e38acf2cffc89ce96ef7deb6383b4164e8db9f023e2c363421dade6925d6
+            imagePullPolicy: IfNotPresent
+            resources:   
+              limits: 
+                 memory: "512Mi"
+                 cpu: "0.6"                                 
+              requests:
+                    memory: "256Mi"
+                    cpu: "0.5"        
+            env:
+              - name: SPRING_DATASOURCE_URL
+                value: jdbc:mysql://mysql-bill-service:3306/billdb?useSSL=false&max_allowed_packet=15728640&allowPublicKeyRetrieval=true
 
-    template: 
-        metadata: 
-            name: bill-pod
-            labels:  
-                app: bill-app-pod
-        spec: 
-             containers:
-                  - name: bill-pod
-                    image: pandeych009/itlogiclab-restaurant-bill:1.0.2@sha256:7173e6069d1e56dea8b14c889b221d48afecd8b68c1b67bf3af4bc3f372cd912
-                    imagePullPolicy: IfNotPresent
-                    resources:   
-                        limits: 
-                            memory: "512Mi"
-                            cpu: "0.6"                                 
-                        requests:
-                            memory: "256Mi"
-                            cpu: "0.5"        
-                    env:
-                      - name: SPRING_DATASOURCE_URL
-                        value: jdbc:mysql://mysql-bill-service:3306/billdb?useSSL=false&max_allowed_packet=15728640&allowPublicKeyRetrieval=true
+              - name: SPRING_DATASOURCE_USERNAME
+                value: cpandey
 
-                      - name: SPRING_DATASOURCE_USERNAME
-                        value: cpandey
+              - name: SPRING_DATASOURCE_PASSWORD
+                value: chandan@1234
 
-                      - name: SPRING_DATASOURCE_PASSWORD
-                        value: chandan@1234
-
-                      - name: SPRING_DATASOURCE_DRIVER_CLASS_NAME
-                        value: com.mysql.cj.jdbc.Driver                                            
-                                                                           
-                    ports: 
-                       - name: httpport
-                         containerPort: 20001 
-                         protocol:  TCP
+              - name: SPRING_DATASOURCE_DRIVER_CLASS_NAME
+                value: com.mysql.cj.jdbc.Driver                                            
+                                                                   
+            ports: 
+               - name: httpport
+                 containerPort: 20001 
+                 protocol:  TCP
 ---
 apiVersion: v1
 kind: Service
@@ -56,5 +55,5 @@ spec:
     ports: 
         - targetPort: 20001
           port: 8080
-          nodePort: 30001
+          nodePort: 32002
     

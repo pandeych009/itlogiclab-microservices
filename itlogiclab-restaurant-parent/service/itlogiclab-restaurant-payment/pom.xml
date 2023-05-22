@@ -11,10 +11,9 @@
 	
 	
 	
-	<groupId>com.itlogiclabs.restaurant.payment</groupId>
-	<artifactId>itlogiclabs-restaurant-payment</artifactId>
-	<version>0.0.1</version>
-	<name>itlogiclabs-restaurant-payment</name>
+	<groupId>com.itlogiclab.restaurant.payment</groupId>
+	<artifactId>itlogiclab-restaurant-payment</artifactId>
+	<name>itlogiclab-restaurant-payment</name>
 	<description>Demo project for Spring Boot</description>
 	<packaging>jar</packaging>
 	

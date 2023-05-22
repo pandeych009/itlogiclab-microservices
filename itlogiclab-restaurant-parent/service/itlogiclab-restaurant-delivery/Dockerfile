@@ -8,7 +8,7 @@ RUN mkdir -p /opt/app/logs/archived
 RUN ls -ltr /opt/app/
 RUN pwd
 
-COPY target/itlogiclabs-restaurant-delivery-*.jar delivery.jar
+COPY target/itlogiclab-restaurant-delivery-*.jar delivery.jar
 RUN ls -ltr /opt/app/
 
 RUN mkdir -p /opt/multimoduleprojects/restaurant/logs
