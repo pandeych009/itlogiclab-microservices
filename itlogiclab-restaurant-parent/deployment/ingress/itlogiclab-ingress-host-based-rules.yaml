@@ -24,4 +24,4 @@ spec:
              service:
                name: bill-service
                port:  
-                number: 20001
+                number: 20002

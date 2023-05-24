@@ -44,7 +44,13 @@
 		    <artifactId>mysql-connector-java</artifactId>           
 		</dependency>
 		
-		
+		<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jdbc -->
+		<dependency>
+		    <groupId>org.apache.tomcat</groupId>
+		    <artifactId>tomcat-jdbc</artifactId>
+		    <version>9.0.43</version>
+		</dependency>
+				
 	</dependencies>
 	
 	<build>

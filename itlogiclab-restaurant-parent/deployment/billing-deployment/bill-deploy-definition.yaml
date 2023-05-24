@@ -17,7 +17,7 @@ spec:
      spec: 
         containers:
           - name: bill-pod
-            image: pandeych009/itlogiclab-restaurant-billing@sha256:f9e3e38acf2cffc89ce96ef7deb6383b4164e8db9f023e2c363421dade6925d6
+            image: pandeych009/itlogiclab-restaurant-billing@sha256:6f086bfc4b4f7483b9d13df171809a040931b4349671f5119c836b04a4986d14
             imagePullPolicy: IfNotPresent
             resources:   
               limits: 
@@ -41,7 +41,7 @@ spec:
                                                                    
             ports: 
                - name: httpport
-                 containerPort: 20001 
+                 containerPort: 20002
                  protocol:  TCP
 ---
 apiVersion: v1
@@ -53,7 +53,7 @@ spec:
         app: bill-app-pod
     type: NodePort                      
     ports: 
-        - targetPort: 20001
+        - targetPort: 20002
           port: 8080
           nodePort: 32002
     

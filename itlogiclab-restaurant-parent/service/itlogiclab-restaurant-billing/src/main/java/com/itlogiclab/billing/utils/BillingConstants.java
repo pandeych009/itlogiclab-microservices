@@ -27,45 +27,45 @@ public class BillingConstants {
 	public static final String URL = "url";
 	public static final String DRIVER_CLASS_NAME = "driverClassName";
 	
-	public static final String ENV_JNDI_NAME = "ENV_JNDI_NAME";
+	public static final String ENV_JNDI_NAME = "SPRING_DATASOURCE_JNDI_NAME";
 	
 	
-	public static final String ENV_AUTH = "ENV_AUTH";
-	public static final String ENV_TYPE = "ENV_TYPE";
-	public static final String ENV_URL = "ENV_URL";
+	public static final String ENV_AUTH = "SPRING_DATASOURCE_AUTH";
+	public static final String ENV_TYPE = "SPRING_DATASOURCE_TYPE";
+	public static final String ENV_URL = "SPRING_DATASOURCE_URL";
 	
-	public static final String ENV_USERNAME = "ENV_USERNAME";
-	public static final String ENV_PASSWORD = "ENV_PASSWORD";
+	public static final String ENV_USERNAME = "SPRING_DATASOURCE_USERNAME";
+	public static final String ENV_PASSWORD = "SPRING_DATASOURCE_PASSWORD";
 	
-	public static final String ENV_AUTOCOMMIT = "ENV_AUTOCOMMIT";
-	public static final String ENV_READONLY = "ENV_READONLY";
+	public static final String ENV_AUTOCOMMIT = "SPRING_DATASOURCE_AUTOCOMMIT";
+	public static final String ENV_READONLY = "SPRING_DATASOURCE_READONLY";
 	
-	public static final String ENV_DRIVER_CLASSNAME = "ENV_DRIVER_CLASSNAME";
-	public static final String ENV_MAX_ACTIVE = "ENV_MAX_ACTIVE";
-	public static final String ENV_MAX_IDLE = "ENV_MAX_IDLE";
+	public static final String ENV_DRIVER_CLASSNAME = "SPRING_DATASOURCE_DRIVER_CLASS_NAME";
+	public static final String ENV_MAX_ACTIVE = "SPRING_DATASOURCE_MAX_ACTIVE";
+	public static final String ENV_MAX_IDLE = "SPRING_DATASOURCE_MAX_IDLE";
 	
-	public static final String ENV_MIN_IDLE = "ENV_MIN_IDLE";
-	public static final String ENV_INITIAL_SIZE = "ENV_INITIAL_SIZE";
+	public static final String ENV_MIN_IDLE = "SPRING_DATASOURCE_MIN_IDLE";
+	public static final String ENV_INITIAL_SIZE = "SPRING_DATASOURCE_INITIAL_SIZE";
 	
 	
-	public static final String ENV_MAX_WAIT = "ENV_MAX_WAIT";
-	public static final String ENV_TEST_ON_BORROW = "ENV_TEST_ON_BORROW";
+	public static final String ENV_MAX_WAIT = "SPRING_DATASOURCE_MAX_WAIT";
+	public static final String ENV_TEST_ON_BORROW = "SPRING_DATASOURCE_TEST_ON_BORROW";
 	
-	public static final String ENV_TEST_ON_CONNECT = "ENV_TEST_ON_CONNECT";
-	public static final String ENV_TEST_ON_RETURN = "ENV_TEST_ON_RETURN";
+	public static final String ENV_TEST_ON_CONNECT = "SPRING_DATASOURCE_TEST_ON_CONNECT";
+	public static final String ENV_TEST_ON_RETURN = "SPRING_DATASOURCE_TEST_ON_RETURN";
 	
-	public static final String ENV_WHILE_IDLE = "ENV_WHILE_IDLE";
-	public static final String ENV_VALIDATION_QUERY = "ENV_VALIDATION_QUERY";
+	public static final String ENV_WHILE_IDLE = "SPRING_DATASOURCE_WHILE_IDLE";
+	public static final String ENV_VALIDATION_QUERY = "SPRING_DATASOURCE_VALIDATION_QUERY";
 	
-	public static final String ENV_VALIDATION_QUERY_TIMEOUT = "ENV_VALIDATION_QUERY_TIMEOUT";
+	public static final String ENV_VALIDATION_QUERY_TIMEOUT = "SPRING_DATASOURCE_VALIDATION_QUERY_TIMEOUT";
 	
-	public static final String ENV_VALIDATIOR_CLASS_NAME = "ENV_VALIDATIOR_CLASS_NAME";
-	public static final String ENV_REMOVE_ABANDON = "ENV_REMOVE_ABANDON";
+	public static final String ENV_VALIDATIOR_CLASS_NAME = "SPRING_DATASOURCE_VALIDATIOR_CLASS_NAME";
+	public static final String ENV_REMOVE_ABANDON = "SPRING_DATASOURCE_REMOVE_ABANDON";
 	
-	public static final String ENV_REMOVE_ABANDON_TIMEOUT = "ENV_REMOVE_ABANDON_TIMEOUT";
-	public static final String ENV_LOG_ABANDON = "ENV_LOG_ABANDON";
+	public static final String ENV_REMOVE_ABANDON_TIMEOUT = "SPRING_DATASOURCE_REMOVE_ABANDON_TIMEOUT";
+	public static final String ENV_LOG_ABANDON = "SPRING_DATASOURCE_LOG_ABANDON";
 	
-	public static final String ENV_TIME_BETWEEN_EVICTION_RUNS_MILLIS="ENV_TIME_BETWEEN_EVICTION_RUNS_MILLIS";
-	public static final String ENV_MIN_EVICTABLE_IDLE_TIME_MILLIS="ENV_MIN_EVICTABLE_IDLE_TIME_MILLIS";
+	public static final String ENV_TIME_BETWEEN_EVICTION_RUNS_MILLIS="SPRING_DATASOURCE_TIME_BETWEEN_EVICTION_RUNS_MILLIS";
+	public static final String ENV_MIN_EVICTABLE_IDLE_TIME_MILLIS="SPRING_DATASOURCE_MIN_EVICTABLE_IDLE_TIME_MILLIS";
 	
 }
