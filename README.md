@@ -27,9 +27,9 @@ Maven Build the project
 mvn clean install -DskipTests=true
 
 ```
-#Deployment
+# Deployment
 
-##Deployment on Kubernetes
+## Deployment on Kubernetes
 
 Start the docker daemon 
 
