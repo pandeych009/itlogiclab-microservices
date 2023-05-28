@@ -8,7 +8,11 @@ Please use Order or Billing application.
 
 ## Installation
 Download the project using the following command
+```
 git clone https://github.com/pandeych009/itlogiclab-microservices.git
+```
 
 Checkout the dev branch
+```
 git checkout dev
+```
