@@ -67,10 +67,12 @@ kubectl get all
 ## Running the application 
 1. Application 
 ```
-Steps for running the application is mention on the page at [itlogiclab pages](https://itlogiclab.com/2022/12/kubernetes-deployment-of-springboot-application-with-mysql/)
+Steps for running the application is mention on the page at 
 ```
+[itlogiclab pages](https://itlogiclab.com/2022/12/kubernetes-deployment-of-springboot-application-with-mysql/)
 
 2. Ingress
 ``` 
-Step for running the ingress is listed on [itlogiclab pages](https://itlogiclab.com/2023/05/ingress/)
+Step for running the ingress is listed on 
 ```
+[itlogiclab pages](https://itlogiclab.com/2023/05/ingress/)
