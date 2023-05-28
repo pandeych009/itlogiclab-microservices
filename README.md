@@ -42,3 +42,28 @@ systemctl docker start
 ```
 systemctl docker start
 ```
+
+3. Start the minikube cluster 
+```
+minikube start
+```
+
+4. Enable Add ons
+```
+minikube enable addons ingress
+```
+
+5. Deployment of Order application
+```
+kubectl apply -f ./deployment/order-deployment/mysql-deploy-definition.yaml 
+kubectl apply -f ./deployment/order-deployment/order-deployment-definition.yaml
+```
+
+6. Validate the deployment
+```
+kubectl get all
+```
+
+## Running the application 
+Steps for running the application is mention on the page at [itlogiclab pages](https://itlogiclab.com/2022/12/kubernetes-deployment-of-springboot-application-with-mysql/)
+
