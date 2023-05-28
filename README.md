@@ -16,3 +16,29 @@ Checkout the dev branch
 ```
 git checkout dev
 ```
+
+Change the directoy 
+```
+cd itlogiclab-microservices
+```
+
+Maven Build the project
+```
+mvn clean install -DskipTests=true
+
+```
+#Deployment
+
+##Deployment on Kubernetes
+
+Start the docker daemon 
+
+1. Unix 
+```
+systemctl docker start
+```
+
+2. Mac
+```
+systemctl docker start
+```
