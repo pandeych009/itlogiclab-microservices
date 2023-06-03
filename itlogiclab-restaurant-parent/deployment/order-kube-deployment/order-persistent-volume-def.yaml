@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata: 
+   name: order-kube-pv
+spec: 
+  accessModes: 
+     - ReadWriteMany
+  capacity: 
+    storage: 500Mi
+  storageClassName: standard  

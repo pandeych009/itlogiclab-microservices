@@ -1,0 +1,16 @@
+server: 
+  port: ${PORT:20002}
+  contextPath: /billing
+
+#spring:
+# datasource:
+#   username: ${SPRING_DATASOURCE_USERNAME:cpandey}
+#   password: ${SPRING_DATASOURCE_PASSWORD:chandan@1234}
+#   driver-class-name: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME:com.mysql.cj.jdbc.Driver}
+#   url: ${SPRING_DATASOURCE_URL:jdbc:mysql://${MYSQL_HOST:localhost}:3311/${MYSQL-DB-BILLING:billdb}}
+# jpa:
+#   properties: 
+#    hibernate: 
+#      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+#      ddl-auto : none
+

@@ -1,0 +1,12 @@
+minikube service hello-minikube1 --url
+ps -ef | grep docker@127.0.0.1
+	OP: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -N docker@127.0.0.1 -p 55972 -i /Users/FOO/.minikube/machines/minikube/id_rsa -L TUNNEL_PORT:CLUSTER_IP:TARGET_PORT
+Access Service: 
+   http://localhost:TUNNEL_PORT/URL	
+   
+URL: 
+#spring.datasource.url=jdbc:mysql://order_data_db:3306/orderdb?useSSL=false   
+
+https://www.densify.com/kubernetes-tools/kustomize/
+
+#minikube addons enable ingress 

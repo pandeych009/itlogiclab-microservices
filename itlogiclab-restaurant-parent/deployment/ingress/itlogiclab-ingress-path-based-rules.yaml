@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1 
+kind: Ingress
+metadata:
+    name: itlogiclab-path-based-routing-rules
+    namespace: default
+    #annotations: 
+     #  nginx.ingress.kubernetes.io/rewrite-target: /
+spec: 
+  rules:
+  - http: 
+     paths: 
+     - path: /billing
+       pathType: Prefix
+       backend: 
+        service: 
+           name: bill-service
+           port: 
+             number: 20002
+     - path: /order
+       pathType: Prefix
+       backend: 
+        service: 
+            name: order-service
+            port: 
+              number: 20001

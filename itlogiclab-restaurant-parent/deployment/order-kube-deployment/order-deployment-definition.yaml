@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+    name: order-kube
+    labels:
+        app: order-app-kube
+        type: order-backend-kube
+spec: 
+    replicas: 1
+    selector: 
+        matchLabels:
+            app: order-pod-app-kube
+            type: order-backend-pod-kube
+    template: 
+        metadata: 
+            name: order-pod-kube
+            labels:  
+                app: order-pod-app-kube
+                type: order-backend-pod-kube
+        spec:
+             serviceAccountName: order-kube-sa ##POD Identity 
+             containers:
+                  - name: order-pod
+                    image: pandeych009/itlogiclab-restaurant-order-kube:3.0.5@sha256:a23e136b1af0a12578c5619d93397eca5fca299cc5da1bf1dd9ebffc802e52fe
+                    imagePullPolicy: IfNotPresent
+                    ports: 
+                       - name: httpport
+                         containerPort: 20001 
+                         protocol:  TCP
+                    livenessProbe: 
+                       httpGet:
+                          path: actuator/health
+                          port: 20001
+                       initialDelaySeconds: 10
+                       periodSeconds: 10
+                    readinessProbe: 
+                       httpGet:
+                         path: actuator/health
+                         port: 20001
+                       initialDelaySeconds: 10
+                       periodSeconds: 10  
+                    resources: 
+                       requests: 
+                         memory: 64Mi
+                         cpu: 0.2
+                       limits:
+                          memory: 128Mi
+                          cpu: 0.5
+                    env: 
+                     - name: KUBE_USER_NAME
+                       valueFrom: 
+                          secretKeyRef: 
+                             name: order-kube-secret
+                             key: KUBE_USER_NAME
+                     - name: KUBE_PASSWORD
+                       valueFrom: 
+                         secretKeyRef: 
+                           name: order-kube-secret
+                           key: KUBE_PASSWORD
+                     - name: KUBE_DATABASE
+                       valueFrom: 
+                         configMapKeyRef: 
+                            name: order-kube-configmap
+                            key: KUBE_DATABASE  
+                    securityContext: 
+                      runAsUser: 10002
+                      runAsGroup: 30002
+                      readOnlyRootFileSystem: true 
+
+    
+  
+
+#minikube start --driver=docker --extra-config=apiserver.service-node-port-range=32760-32767 --ports=127.0.0.1:32760-32767:32760-32767
+#echo <password> | openssl enc -aes-256-ecb -e -a -K <key> 
+#4254514F6C6C2B594650496373422B764D66584E54673D3D
+#CS6qtgx4n9+RQwwTDJM0tQ== CHANDAN
+#7B9Y70VMEgXJo6R0mvezHQ== PASSWORD
+#kubectl create secret generic order-kube-secret --from-literal=KUBE_USER_NAME=CS6qtgx4n9+RQwwTDJM0tQ== --from-literal=KUBE_PASSWORD=7B9Y70VMEgXJo6R0mvezHQ==
+
+

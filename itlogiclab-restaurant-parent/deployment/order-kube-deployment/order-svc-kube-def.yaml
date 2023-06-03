@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata: 
+    name: order-service-kube
+spec: 
+    selector: 
+        app: order-pod-app-kube
+        type: order-backend-pod-kube
+    type: NodePort                      
+    ports: 
+        - targetPort: 20001
+          port: 8080
+          nodePort: 30001
+    

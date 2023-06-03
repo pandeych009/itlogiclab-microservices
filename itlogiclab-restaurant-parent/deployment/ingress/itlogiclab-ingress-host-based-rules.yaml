@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata: 
+  name: itlogiclab-host-based-routing-rules
+  namespace: default
+spec: 
+  rules: 
+    - host: order.itlogiclab-api.com
+      http: 
+        paths: 
+          -  pathType: Prefix
+             path: "/order/api/"
+             backend: 
+              service: 
+               name: order-service
+               port: 
+                number: 20001
+    - host: billing.itlogiclab-api.com
+      http: 
+        paths: 
+          - pathType: Prefix 
+            path: "/billing/api/" 
+            backend: 
+             service:
+               name: bill-service
+               port:  
+                number: 20002
