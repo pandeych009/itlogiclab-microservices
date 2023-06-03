@@ -10,3 +10,13 @@ URL:
 https://www.densify.com/kubernetes-tools/kustomize/
 
 #minikube addons enable ingress 
+
+
+Springboot with Mysql deployment on kubernetes
+Saperate deployment of Springboot app and mysql
+Externalised data 
+Initial DB script to be executed on mysql 
+shell scripts for automated deployment 
+shell script is for testing 
+
+https://itlogiclab.com/2022/12/kubernetes-deployment-of-springboot-application-with-mysql/
