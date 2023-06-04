@@ -29,6 +29,10 @@ mvn clean install -DskipTests=true
 ```
 # Deployment
 
+## Deployment using docker - Compose
+
+
+
 ## Deployment on Kubernetes
 
 Start the docker daemon 
@@ -76,3 +80,41 @@ Steps for running the application is mention on the page at
 Step for running the ingress is listed on 
 ```
 [itlogiclab Ingress pages](https://itlogiclab.com/2023/05/ingress/)
+
+
+3. Docker-Compose 
+
+PLease check the .env file which is present in the current directory if the service. 
+```
+e.g. itlogiclab-restaurant-order have its own .env files
+```
+Update few variable values which is your system based. 
+
+Execute the following command after traversing to project directory 
+```
+docker-compose -f docker-compose-order.yaml up -d
+```
+Check the installation 
+```
+docker ps 
+```
+
+Response look like this 
+```
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS                                           NAMES
+33f492a97e19   609fc5f31863   "java -jar /opt/app/…"   9 seconds ago   Up 7 seconds   0.0.0.0:20001->20001/tcp, :::20001->20001/tcp   order-web-app
+897211293b98   56b1d76c9338   "/docker-entrypoint.…"   9 seconds ago   Up 8 seconds   0.0.0.0:3301->3306/tcp, :::3301->3306/tcp       order-percona-db
+```
+
+Test the application using curl 
+```
+http://localhost:20001/order/api/get
+```
+
+More Information on
+
+[Itlogiclab Docker Pages](https://itlogiclab.com/2022/10/deployment-of-springboot-application-with-mysql-using-docker-compose/)
+
+
+
+

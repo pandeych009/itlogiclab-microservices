@@ -10,17 +10,17 @@ services:
       - MYSQL_ROOT_PASSWORD=$ROOT_PASSWORD
       - MYSQL_USER=$DB_USER
       - MYSQL_PASSWORD=$DB_PASSWORD
-      - MYSQL_DATABASE=$DATABASE
+      - MYSQL_DATABASE=$MYSQLDB_ORDER_DATABASE
     ports:
       - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
       - type: bind
-        source: /home/cpandey/projects/docker-data/restaurant/order/mysql/data
+        source: $BASE_LOCATION/$ORDER_MYSQL_DATA_LOC
         target: /var/lib/mysql
         volume:
           nocopy: true
       - type: bind
-        source: /home/cpandey/projects/docker-data/restaurant/order/mysql/script/orderdb.sql
+        source: $BASE_LOCATION/$ORDER_INITIAL_SCRIPT_LOC
         target: /docker-entrypoint-initdb.d/1.sql
         volume:
           nocopy: true
@@ -34,10 +34,10 @@ services:
       restart: on-failure
       env_file: ./.env
       ports:
-        - $ORDER_WEB_LOCAL_PORT:$DOCKER_WEB_PORT
+        - $ORDER_WEB_LOCAL_PORT:$DOCKER_ORDER_WEB_PORT
       environment:
         SPRING_APPLICATION_JSON: '{
-              "spring.datasource.url"  : "jdbc:mysql://order_data_db:$MYSQLDB_DOCKER_PORT/$DATABASE?useSSL=false",
+              "spring.datasource.url"  : "$MYSQLDB_ORDER_URL",
               "spring.datasource.username" : "$DB_USER",
               "spring.datasource.password" : "$DB_PASSWORD",
               "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
@@ -46,7 +46,7 @@ services:
             }'
       volumes:
         - type: bind
-          source: /home/cpandey/projects/docker-data/restaurant/order/logs
+          source: $BASE_LOCATION/$ORDER_LOG_LOG
           target: /opt/multimoduleprojects/restaurant/logs
           volume:
             nocopy: true
