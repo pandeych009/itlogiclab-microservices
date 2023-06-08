@@ -31,7 +31,7 @@ import com.itlogiclab.billing.utils.BillingConstants;
 @EnableJpaRepositories(basePackages = "com.itlogiclab.billing.repos")
 @EnableTransactionManagement
 public class TomcatFactoryConfig {
-	private static Logger logger = LogManager.getLogger(TomcatFactoryConfig.class); 
+	private static Logger LOGGER = LogManager.getLogger(TomcatFactoryConfig.class); 
 
 	@Bean
 	public DataSourceConfigJndi getDataSourceConfig() {
@@ -51,7 +51,7 @@ public class TomcatFactoryConfig {
 	        protected void postProcessContext(Context context) {
 				
 				DataSourceConfigJndi jndiProps = getDataSourceConfig();
-				logger.debug("DataSource Props: "+jndiProps);
+				LOGGER.debug("DataSource Props: "+jndiProps);
 				
 				ContextResource resource = new ContextResource();
 	            resource.setName(getDataSourceConfig().getJndiName());
